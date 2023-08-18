@@ -1,0 +1,33 @@
+Title: Image Smoothing
+
+Image Smoothing:
+RGB = imread('Aritra.png');
+subplot(5,3,1), imshow(RGB);
+title('Original RGB Image);
+I = rgb2gray(RGB);
+subplot(5,3,4), imshow(I);
+title('Original Gray Image');
+JG = imnoise(I,'gaussian',0,0.005); %Mean 0 % variance 0.005
+subplot(5,3,5), imshow(JG);
+title('Original Image Corrupted by Gaussian Noise');
+KG = wiener2(JG,[5 5]);
+subplot(5,3,6), imshow(KG);
+title('Wiener Smoothed Image');
+JP = imnoise(I,'poisson');
+subplot(5,3,8), imshow(JP);
+title('Original Image Corrupted by Poisson Noise');
+KP = wiener2(JP,[5 5]);
+subplot(5,3,9), imshow(KP);
+title(&#39;Wiener Smoothed Image&#39;);
+JS = imnoise(I,'speckle',0.04);
+subplot(5,3,11), imshow(JS);
+title('Original Image Corrupted by Speckle Noise';);
+KS = wiener2(JS,[5 5]);
+subplot(5,3,12), imshow(KS);
+title('Wiener Smoothed Image');
+JSP = imnoise(I,'salt &amp; pepper',0.05);
+subplot(5,3,14), imshow(JSP);
+title('Original Image Corrupted by Salt & Pepper Noise');
+KSP = wiener2(JSP,[5 5]);
+subplot(5,3,15), imshow(KSP);
+title('Wiener Smoothed Image');
