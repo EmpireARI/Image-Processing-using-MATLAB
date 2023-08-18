@@ -1,0 +1,41 @@
+Low Pass Filtering:
+
+clear all
+I = imread('aritra.jpg');
+subplot(1,2,1), imshow(I)
+f = ones(3,3)/9;
+F = filter2(f,I,'same');
+subplot(1,2,2), imshow(F/255)
+
+
+High Pass Filtering:
+
+clear all
+I = imread('aritra1.jpg');
+subplot(1,2,1), imshow(I)
+f = 1/9*[1 1 1;1 8 1;1 1 1];
+F = filter2(f,I,'same');
+subplot(1,2,2), imshow(F/255)
+
+
+Mean Filtering:
+
+clear all
+I = imread('aritra2.jpg');
+subplot(1,3,1), imshow(I)
+S = imnoise(I,'salt & pepper',0.02);
+subplot(1,3,2), imshow(S)
+M = fspecial('average',[3,3]);
+F = filter2(M,S,'same';);
+subplot(1,3,3), imshow(F/255)
+
+
+Median Filtering:
+
+clear all
+I = imread('aritra3.jpg');
+subplot(1,3,1), imshow(I)
+J = imnoise(I,'salt & pepper',0.02);
+subplot(1,3,2), imshow(J)
+K = medfilt2(J);
+subplot(1,3,3), imshow(K)
