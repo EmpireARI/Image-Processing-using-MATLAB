@@ -1,0 +1,10 @@
+Title: Point Detection
+
+f = checkerboard(8);
+subplot(2,2,1),subimage(f);
+w = [-1 -1 -1;-1 8 -1;-1 -1 -1];
+g = abs(imfilter(double(f),w));
+subplot(2,2,2); subimage(g);
+T = max(g(:));
+p = g>=T;
+subplot(2,2,3); subimage(p);
